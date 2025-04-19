@@ -11,7 +11,7 @@
 - Waf-control : 管理控制台，提供 Web 界面进行规则和站点管理
 - x-waf : 基于 OpenResty 的 WAF 引擎，负责实际的请求过滤和攻击拦截
 
-This project is a Web Application Firewall (WAF) management system developed in Go, designed to work with open-source WAF engines (such as x-waf). It provides visual rule management, site configuration, automatic synchronization, and is suitable for centralized operation and unified security policy management across multiple WAF hosts.
+
 
 ---
 
@@ -25,14 +25,7 @@ This project is a Web Application Firewall (WAF) management system developed in 
 - **响应式界面**：现代化响应式前端界面
 - **部署支持**：支持 Windows 和 Linux 环境部署
 
-- Online management of WAF rules (CRUD)
-- Supports multiple rule types (URL, IP, User-Agent, Cookie, POST, Header, etc.)
-- Site add/edit/delete and configuration synchronization
-- Automatic configuration synchronization for multiple WAF hosts
-- User management and permission control
-- Automatic Nginx configuration generation and reload
-- Supports both Windows and Linux deployment
-- Modern responsive frontend UI
+
 
 ---
 
