@@ -48,7 +48,7 @@
 
 ## 目录结构 
 
-
+```bash
 Waf-control/         # 管理端主程序
 ├─ conf/           # 配置文件目录（如 app.ini）
 ├─ models/         # ORM 数据模型
@@ -58,9 +58,9 @@ Waf-control/         # 管理端主程序
 ├─ templates/      # 前端模板与静态资源
 ├─ server.go       # 程序入口
  x-waf/               # WAF 本体（Lua 规则引擎等）
-
+```
+---
  
-
 ## 安装部署 ##
 **依赖环境**
 
@@ -188,6 +188,7 @@ The WAF system effectively blocks the following types of attacks:
 
 ## Directory Structure
 
+```bash
 Waf-control/         # Main program for management
 ├─ conf/           # Configuration files (e.g., app.ini)
 ├─ models/         # ORM data models
@@ -197,6 +198,7 @@ Waf-control/         # Main program for management
 ├─ templates/      # Frontend templates and static resources
 ├─ server.go       # Program entry point
 x-waf/               # WAF engine (Lua rule engine, etc.)
+```
 
 ---
 
