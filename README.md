@@ -116,10 +116,12 @@ go get github.com/go-xorm/xorm
 http://localhost:8081
 默认用户名: admin
 默认密码: admin
+![57c77584e0e8247c448bc83752c9f55f](https://github.com/user-attachments/assets/4482c426-f630-467d-99bb-8edba2c68104)
 
 
 ## WAF 拦截效果展示 ##
 
+![932246632f5d079803fd64bf71f914e1](https://github.com/user-attachments/assets/d4dfee5a-3382-49d9-9a82-af503ba041f1)
 
 ---
 
@@ -260,10 +262,13 @@ go get github.com/go-xorm/xorm
 http://localhost:8081
 Default username: admin
 Default password: admin
+![57c77584e0e8247c448bc83752c9f55f](https://github.com/user-attachments/assets/4482c426-f630-467d-99bb-8edba2c68104)
 
 ---
 
 ## WAF Blocking Effect Showcase 
+
+![932246632f5d079803fd64bf71f914e1](https://github.com/user-attachments/assets/d4dfee5a-3382-49d9-9a82-af503ba041f1)
 
 ---
 
