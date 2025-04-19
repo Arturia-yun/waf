@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>控制面板 - WAF管理系统</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/modern-style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+        <!-- 导航栏 -->
+        <nav class="navbar navbar-expand-lg navbar-dark mb-4">
+            <a class="navbar-brand" href="/admin/index">WAF管理系统</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/site">站点管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/rule">规则管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/user">用户管理</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">退出登录</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- 消息提示 -->
+        {{if .Flash.SuccessMsg}}
+        <div class="alert alert-success">
+            {{.Flash.SuccessMsg}}
+        </div>
+        {{end}}
+        
+        {{if .Flash.ErrorMsg}}
+        <div class="alert alert-danger">
+            {{.Flash.ErrorMsg}}
+        </div>
+        {{end}}
+
+        <!-- 页面内容 -->
+        <h1 class="page-header">WAF管理系统控制面板</h1>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        站点管理
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">站点数量: {{.SiteCount}}</h5>
+                        <p class="card-text">管理和配置WAF保护的站点</p>
+                        <a href="/admin/site" class="btn btn-primary">查看站点</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-header bg-success text-white">
+                        规则管理
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">规则数量: {{.RuleCount}}</h5>
+                        <p class="card-text">管理WAF防护规则</p>
+                        <a href="/admin/rule" class="btn btn-success">查看规则</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-header bg-info text-white">
+                        用户管理
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">用户数量: {{.UserCount}}</h5>
+                        <p class="card-text">管理系统用户</p>
+                        <a href="/admin/user" class="btn btn-info">查看用户</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+    <script src="/js/modern-effects.js"></script>
+</body>
+</html>

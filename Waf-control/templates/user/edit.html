@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>编辑用户 - WAF管理系统</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/modern-style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark mb-4">
+            <a class="navbar-brand" href="/admin/index">WAF管理系统</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/site">站点管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/rule">规则管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/user">用户管理</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">退出登录</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        
+        <h1 class="mt-4">编辑用户</h1>
+
+        {{if .Flash.ErrorMsg}}
+        <div class="alert alert-danger">
+            {{.Flash.ErrorMsg}}
+        </div>
+        {{end}}
+        
+        {{if .Flash.SuccessMsg}}
+        <div class="alert alert-success">
+            {{.Flash.SuccessMsg}}
+        </div>
+        {{end}}
+        
+        <form action="/admin/user/edit/{{.user.Id}}" method="post">
+            <input type="hidden" name="_csrf" value="{{.csrf_token}}">
+            
+            <div class="form-group mb-3">
+                <label for="username">用户名</label>
+                <input type="text" class="form-control" id="username" name="username" value="{{.user.Username}}" required>
+            </div>
+            
+            <div class="form-group mb-3">
+                <label for="password">密码</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="留空表示不修改密码">
+                <small class="form-text text-muted">如果不需要修改密码，请留空</small>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">提交</button>
+            <a href="/admin/user" class="btn btn-secondary">返回</a>
+        </form>
+
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+    <script src="/js/modern-effects.js"></script>
+</body>
+</html>

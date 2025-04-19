@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{.Title}} - WAF管理系统</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/modern-style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+        
+        <nav class="navbar navbar-expand-lg navbar-dark mb-4">
+            <a class="navbar-brand" href="/admin/index">WAF管理系统</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/site">站点管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/rule">规则管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/user">用户管理</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">退出登录</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <h1>规则列表</h1>
+        
+        {{if .Flash.SuccessMsg}}
+        <div class="alert alert-success">
+            {{.Flash.SuccessMsg}}
+        </div>
+        {{end}}
+        
+        {{if .Flash.ErrorMsg}}
+        <div class="alert alert-danger">
+            {{.Flash.ErrorMsg}}
+        </div>
+        {{end}}
+        
+        <div class="row mb-3">
+            <div class="col">
+                <div class="btn-group">
+                    <a href="/admin/rule/new/url" class="btn btn-primary">新建URL规则</a>
+                    <a href="/admin/rule/new/args" class="btn btn-primary">新建参数规则</a>
+                    <a href="/admin/rule/new/blackip" class="btn btn-primary">新建黑名单IP</a>
+                    <a href="/admin/rule/new/whiteip" class="btn btn-primary">新建白名单IP</a>
+                    <a href="/admin/rule/new/whiteUrl" class="btn btn-primary">新建白名单URL</a>
+                    <a href="/admin/rule/new/useragent" class="btn btn-primary">新建User-Agent规则</a>
+                </div>
+            </div>
+            <div class="col-auto">
+                <a href="/admin/rule/sync" class="btn btn-success">同步规则</a>
+            </div>
+        </div>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>规则类型</th>
+                    <th>规则内容</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{range .Rules}}
+                <tr>
+                    <td>{{.Id}}</td>
+                    <td>{{.RuleType}}</td>
+                    <td>{{.RuleItem}}</td>
+                    <td>
+                        <a href="/admin/rule/edit/{{.Id}}" class="btn btn-sm btn-info">编辑</a>
+                        <a href="/admin/rule/del/{{.Id}}" class="btn btn-sm btn-danger" onclick="return confirm('确定要删除吗？')">删除</a>
+                    </td>
+                </tr>
+                {{end}}
+            </tbody>
+        </table>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+    <script src="/js/modern-effects.js"></script>
+</body>
+</html>

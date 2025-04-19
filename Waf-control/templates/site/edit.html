@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{.Title}} - WAF管理系统</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/modern-style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+        
+        <nav class="navbar navbar-expand-lg navbar-dark mb-4">
+            <a class="navbar-brand" href="/admin/index">WAF管理系统</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/site">站点管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/rule">规则管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/user">用户管理</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">退出登录</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <h1>编辑站点</h1>
+        
+        {{if .Flash.ErrorMsg}}
+        <div class="alert alert-danger">
+            {{.Flash.ErrorMsg}}
+        </div>
+        {{end}}
+        
+        {{if .Flash.SuccessMsg}}
+        <div class="alert alert-success">
+            {{.Flash.SuccessMsg}}
+        </div>
+        {{end}}
+        
+        <form action="/admin/site/edit/{{.Site.Id}}" method="post">
+            <input type="hidden" name="_csrf" value="{{.csrf_token}}">
+            
+            <div class="form-group mb-3">
+                <label>站点ID</label>
+                <input type="text" class="form-control" value="{{.Site.Id}}" readonly>
+            </div>
+            
+            <div class="form-group mb-3">
+                <label>站点名称</label>
+                <input type="text" class="form-control" name="site_name" value="{{.Site.SiteName}}" required>
+                <small class="form-text text-muted">站点的域名，如 example.com</small>
+            </div>
+            
+            <div class="form-group mb-3">
+                <label>端口</label>
+                <input type="number" class="form-control" name="port" value="{{.Site.Port}}" required>
+                <small class="form-text text-muted">站点监听的端口，如 80 或 443</small>
+            </div>
+            
+            <div class="form-group mb-3">
+                <label>后端地址</label>
+                <input type="text" class="form-control" name="backend_addr" value="{{.BackendAddr}}" required>
+                <small class="form-text text-muted">后端服务器地址，多个地址用逗号分隔，如 192.168.1.100:8080,192.168.1.101:8080</small>
+            </div>
+            
+            <div class="form-group mb-3">
+                <label>虚拟地址</label>
+                <input type="text" class="form-control" name="unreal_addr" value="{{.UnrealAddr}}">
+                <small class="form-text text-muted">虚拟地址，多个地址用逗号分隔（可选）</small>
+            </div>
+            
+            <div class="form-group mb-3">
+                <label>SSL</label>
+                <select class="form-control" name="ssl">
+                    <option value="off" {{if eq .Site.Ssl "off"}}selected{{end}}>关闭</option>
+                    <option value="on" {{if eq .Site.Ssl "on"}}selected{{end}}>开启</option>
+                </select>
+                <small class="form-text text-muted">是否启用SSL</small>
+            </div>
+            
+            <div class="form-group mb-3">
+                <label>调试级别</label>
+                <select class="form-control" name="debug_level">
+                    <option value="error" {{if eq .Site.DebugLevel "error"}}selected{{end}}>error</option>
+                    <option value="debug" {{if eq .Site.DebugLevel "debug"}}selected{{end}}>debug</option>
+                    <option value="info" {{if eq .Site.DebugLevel "info"}}selected{{end}}>info</option>
+                    <option value="notice" {{if eq .Site.DebugLevel "notice"}}selected{{end}}>notice</option>
+                    <option value="warn" {{if eq .Site.DebugLevel "warn"}}selected{{end}}>warn</option>
+                    <option value="crit" {{if eq .Site.DebugLevel "crit"}}selected{{end}}>crit</option>
+                    <option value="alert" {{if eq .Site.DebugLevel "alert"}}selected{{end}}>alert</option>
+                    <option value="emerg" {{if eq .Site.DebugLevel "emerg"}}selected{{end}}>emerg</option>
+                </select>
+                <small class="form-text text-muted">Nginx日志级别</small>
+            </div>
+            
+            <div class="form-group mb-3">
+                <button type="submit" class="btn btn-primary">保存</button>
+                <a href="/admin/site" class="btn btn-secondary">返回</a>
+            </div>
+        </form>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+    <script src="/js/modern-effects.js"></script>
+</body>
+</html>

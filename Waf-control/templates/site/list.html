@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{.Title}} - WAF管理系统</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/modern-style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+        
+        <nav class="navbar navbar-expand-lg navbar-dark mb-4">
+            <a class="navbar-brand" href="/admin/index">WAF管理系统</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/site">站点管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/rule">规则管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/user">用户管理</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">退出登录</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <h1>站点列表</h1>
+        
+        {{if .Flash.SuccessMsg}}
+        <div class="alert alert-success">
+            {{.Flash.SuccessMsg}}
+        </div>
+        {{end}}
+        
+        {{if .Flash.ErrorMsg}}
+        <div class="alert alert-danger">
+            {{.Flash.ErrorMsg}}
+        </div>
+        {{end}}
+        
+        <div class="row mb-3">
+            <div class="col">
+                <a href="/admin/site/new" class="btn btn-primary">新建站点</a>
+            </div>
+            <div class="col-auto">
+                <a href="/admin/site/sync" class="btn btn-success">同步所有站点</a>
+            </div>
+        </div>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>站点名称</th>
+                    <th>端口</th>
+                    <th>SSL</th>
+                    <th>调试级别</th>
+                    <th>最后更新</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{range .Sites}}
+                <tr>
+                    <td>{{.Id}}</td>
+                    <td>{{.SiteName}}</td>
+                    <td>{{.Port}}</td>
+                    <td>{{.Ssl}}</td>
+                    <td>{{.DebugLevel}}</td>
+                    <td>{{.LastChange}}</td>
+                    <td>
+                        <a href="/admin/site/edit/{{.Id}}" class="btn btn-sm btn-info">编辑</a>
+                        <a href="/admin/site/sync/{{.Id}}" class="btn btn-sm btn-success">同步</a>
+                        <a href="/admin/site/del/{{.Id}}" class="btn btn-sm btn-danger" onclick="return confirm('确定要删除吗？')">删除</a>
+                    </td>
+                </tr>
+                {{end}}
+            </tbody>
+        </table>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+    <script src="/js/modern-effects.js"></script>
+</body>
+</html>

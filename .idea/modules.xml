@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../testweb/.idea/testweb.iml" filepath="$PROJECT_DIR$/../testweb/.idea/testweb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/waf.iml" filepath="$PROJECT_DIR$/.idea/waf.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../golang project/x-waf-admin/.idea/x-waf-admin.iml" filepath="$PROJECT_DIR$/../../golang project/x-waf-admin/.idea/x-waf-admin.iml" />
+    </modules>
+  </component>
+</project>

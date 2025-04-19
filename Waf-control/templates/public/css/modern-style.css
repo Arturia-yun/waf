@@ -1,0 +1,303 @@
+
+:root {
+    --primary-color: #1c1c1e;
+    --secondary-color: #2c2c2e;
+    --accent-color: #fa586a;
+    --text-color: #ffffff;
+    --text-secondary: #8e8e93;
+    --card-bg: #2c2c2e;
+    --hover-color: #3c3c3f;
+    --border-radius: 12px;
+    --transition-speed: 0.3s;
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    transition: background-color var(--transition-speed) ease;
+}
+
+.container {
+    max-width: 1200px;
+    padding: 20px;
+}
+
+/* 导航栏样式 */
+.navbar {
+    background-color: rgba(28, 28, 30, 0.8) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px 0;
+    margin-bottom: 30px !important;
+}
+
+.navbar-brand {
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--text-color) !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: var(--text-color);
+    opacity: 0.8;
+    transition: opacity var(--transition-speed) ease;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    opacity: 1;
+    background-color: var(--hover-color);
+}
+
+/* 卡片样式 */
+.card {
+    background-color: var(--card-bg);
+    border: none;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.card-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px 20px;
+    font-weight: 600;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.card-text {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+/* 按钮样式 */
+.btn {
+    border-radius: 50px;
+    padding: 8px 20px;
+    font-weight: 500;
+    transition: all var(--transition-speed) ease;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #e04d5f;
+    transform: scale(1.05);
+}
+
+.btn-success {
+    background-color: #2cd9c5;
+    color: #1c1c1e;
+}
+
+.btn-success:hover {
+    background-color: #25c4b2;
+    transform: scale(1.05);
+}
+
+.btn-info {
+    background-color: #64d2ff;
+    color: #1c1c1e;
+}
+
+.btn-info:hover {
+    background-color: #50c2ef;
+    transform: scale(1.05);
+}
+
+.btn-danger {
+    background-color: #ff453a;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #e53c32;
+    transform: scale(1.05);
+}
+
+.btn-sm {
+    padding: 5px 15px;
+    font-size: 12px;
+}
+
+/* 表格样式 */
+.table {
+    color: var(--text-color);
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.table thead th {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-bottom: none;
+    padding: 15px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.table tbody td {
+    padding: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    vertical-align: middle;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* 表单样式 */
+.form-control {
+    background-color: var(--secondary-color);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-color);
+    border-radius: var(--border-radius);
+    padding: 12px 15px;
+    transition: all var(--transition-speed) ease;
+    min-height: 45px; /* 确保所有表单元素有足够的高度 */
+}
+
+.form-control:focus {
+    background-color: rgba(60, 60, 65, 0.95);
+    border-color: var(--accent-color);
+    color: var(--text-color);
+    box-shadow: 0 0 0 3px rgba(250, 88, 106, 0.25);
+}
+
+/* 下拉选择框样式 */
+select.form-control {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+    padding-right: 30px; /* 为下拉箭头留出空间 */
+}
+
+select.form-control option {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    padding: 10px;
+}
+
+/* 警告框样式 */
+.alert {
+    border-radius: var(--border-radius);
+    padding: 15px 20px;
+    border: none;
+    margin-bottom: 25px;
+}
+
+.alert-success {
+    background-color: rgba(44, 217, 197, 0.15);
+    color: #2cd9c5;
+}
+
+.alert-danger {
+    background-color: rgba(255, 69, 58, 0.15);
+    color: #ff453a;
+}
+
+/* 页面标题 */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+/* 登录页面样式 */
+.form-signin {
+    max-width: 400px;
+    padding: 30px;
+    margin: 100px auto;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.form-signin .form-signin-heading {
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 600;
+    font-size: 28px;
+}
+
+.form-signin input {
+    margin-bottom: 15px;
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.container > .row,
+.container > .card,
+.container > .table,
+.container > .alert {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .card-header {
+        padding: 12px 15px;
+    }
+    
+    .card-body {
+        padding: 15px;
+    }
+    
+    .table thead th,
+    .table tbody td {
+        padding: 12px 10px;
+    }
+    
+    .btn-group {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .btn-group .btn {
+        margin-bottom: 5px;
+        border-radius: 50px !important;
+    }
+}
