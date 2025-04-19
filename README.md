@@ -48,6 +48,7 @@
 
 ## 目录结构 
 
+
 Waf-control/         # 管理端主程序
 ├─ conf/           # 配置文件目录（如 app.ini）
 ├─ models/         # ORM 数据模型
@@ -56,9 +57,9 @@ Waf-control/         # 管理端主程序
 ├─ setting/        # 配置加载
 ├─ templates/      # 前端模板与静态资源
 ├─ server.go       # 程序入口
-x-waf/               # WAF 本体（Lua 规则引擎等）
+ x-waf/               # WAF 本体（Lua 规则引擎等）
+
  
----
 
 ## 安装部署 ##
 **依赖环境**
