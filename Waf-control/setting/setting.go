@@ -115,7 +115,7 @@ func Load() {
     }
     
     // 加载Nginx相关配置
-    // 直接从 nginx 节加载，不再尝试从 server 节加载
+    
     nginxSection, err := cfg.GetSection("nginx")
     if err == nil {
         // 默认使用 Linux 配置
