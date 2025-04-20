@@ -13,16 +13,16 @@ import (
 )
 
 func main() {
-	// 加载配置
+	
 	setting.Load()
 
-	// 初始化数据库
+	
 	models.Init()
 
-	// 创建Web服务
+	
 	m := macaron.Classic()
 
-	// 设置模板
+	
 	m.Use(macaron.Renderer(macaron.RenderOptions{
 		Directory:       "templates",
 		IndentJSON:      true,
@@ -32,13 +32,13 @@ func main() {
 		Extensions:      []string{".tmpl", ".html"}, // 支持的扩展名
 	}))
 
-	// 设置会话
+	
 	m.Use(session.Sessioner())
 
-	// 设置CSRF保护
+	
 	m.Use(csrf.Csrfer())
 
-	// 设置静态文件
+	
 	m.Use(macaron.Static("templates/public/css", macaron.StaticOptions{
 		Prefix: "/css",
 	}))
@@ -47,8 +47,7 @@ func main() {
 		Prefix: "/js",
 	}))
 
-	// 设置路由
-	// 在设置路由之前添加
+	
 	m.Use(func(ctx *macaron.Context, flash *session.Flash) {
 		ctx.Data["Flash"] = flash
 	})
@@ -58,7 +57,7 @@ func main() {
 		ctx.Data["csrf_token"] = x.GetToken()
 	})
 
-	// 登录路由
+	
 	m.Get("/", func(ctx *macaron.Context) {
 		ctx.Redirect("/login")
 	})
@@ -117,7 +116,7 @@ func main() {
 		m.Get("/rule/sync", routers.SyncRuleAPI)
 	})
 
-	// 启动服务
+	
 	log.Printf("服务已启动，监听地址: %s:%d\n", setting.HTTPAddr, setting.HTTPPort)
 	log.Fatal(http.ListenAndServe(fmt.Sprintf("%s:%d", setting.HTTPAddr, setting.HTTPPort), m))
 }
